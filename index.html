@@ -25,7 +25,8 @@
     var ctx = canvas.getContext("2d"); 
     resize();
     ctx.fillStyle = "red";
-    var drawing = 1;
+        var drawing = 1;
+    
     
 
 function resize() {
@@ -55,7 +56,7 @@ function penDown () {
 myCanvas.addEventListener(
     'mousemove', function (e){
         console.log(e); 
-        if (number == 1) {
+        if (drawing == 1) {
         draw(e.clientX, e.clientY);
         }
         
