@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,12 +27,10 @@
         var drawing = 1;
     
     
-
 function resize() {
   ctx.canvas.width = window.innerWidth-(window.innerWidth*0.2);
   ctx.canvas.height = window.innerHeight-(window.innerHeight*0.2);
 }
-
  function draw (x,y) {
         //use x and y below
         console.log("Drawing")
@@ -42,7 +39,6 @@ function resize() {
         ctx.fill();
         
     }
-
 function penUp () {
     console.log("Pen Up");
    drawing = 0;
@@ -56,12 +52,12 @@ function penDown () {
 myCanvas.addEventListener(
     'mousemove', function (e){
         console.log(e); 
+        
         if (drawing == 1) {
-        draw(e.clientX, e.clientY);
+        draw(e.x-(this.offsetLeft+5), e.y-(this.offsetTop+5));
         }
         
 })
-
 window.addEventListener(
     'keydown',function(e){
         console.log(e)
@@ -88,16 +84,20 @@ window.addEventListener(
     }
     
 })
-    changecolor();
+        
         
     function clearArea() {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 }
-    function changecolor() {
-        ctx.fillStyle= document.getElementById("picker").value;
-    }
-    
+    	document.getElementById("picker").addEventListener(
+		"change", function(e){
+			console.log(e);
+			ctx.fillStyle = this.value;
+		}
+	)
+        
+        
     </script>
 </body>
 </html>
